@@ -11,13 +11,56 @@ var localStrategy = require('passport-local').Strategy;
 var multer = require('multer');
 var upload = multer({dest:'./uploads'});
 var flash = require('connect-flash');
-
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 
 var app = express();
+/*
 
+var mysql = require('mysql');
+
+const db = mysql.createConnection({
+  host      : 'localhost',
+  user      : 'root',
+  password  : 'LEoking1987',
+  database  : 'hhdbms'
+});
+
+// Conect to MySql DBMS
+db.connect((err) => {
+  if(err){
+      throw err;
+  }
+  console.log('mysql connected...');
+});
+
+// Creates satabase if it does not exist yet.
+app.get('/a',(req,res) => {
+    let sql = 'CREATE DATABASE IF NOT EXISTS hhdbms';
+    db.query(sql, (err, result) => {
+      if(err) throw err;
+      console.log(result);
+      //res.send('Database created...');
+    });
+    //console.log('hhdbms database exists...');
+});
+
+// Create users table
+app.get('/b',(req,res) => {
+    let sql = 'CREATE TABLE user(name varchar(30), '+
+                                'email VARCHAR(30), '+
+                                'userName VARCHAR(30), '+
+                                'password VARCHAR(30), '+
+                                'PRIMARY KEY(userName));';
+    db.query(sql, (err, result) => {
+      if(err) throw err;
+      console.log(result);
+      res.send('User Table Created...');
+      console.log('User table created...');
+    });
+});
+*/
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
