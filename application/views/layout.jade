@@ -26,29 +26,48 @@ html( lang="en" )
        
           #navbar-inverse.collapse.navbar-collapse
               ul.nav.navbar-nav
-                li(class=(title == 'Holton Hotels' ? 'active' : ''))
-                  a(href='/') Home
-                li(class=(title == 'About' ? 'active' : ''))
-                   a( href="/users/about" ) About
-                li(class=(title == 'Register' ? 'active' : ''))
-                   a( href="/users/register" ) Register
-                li(class=(title == 'Login' ? 'active' : ''))
-                   a( href="/users/login" ) Login
+                li.dropdown
+                    a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) Hotel 
+                        span.caret
+                    ul.dropdown-menu( role="menu" )
+                        li: a( href="#" ) Clasic Room
+                        li: a( href="#" ) Double
+                        li: a( href="#" ) Delux
+                        li: a( href="#" ) Suite 
+                        li: a( href="#" ) Presidential Suite  
+                        li.divider
+                        li.dropdown-header Ball Rooms
+                        li: a( href="#" ) The Castle
+                        li: a( href="#" ) The Main Event
+                        li: a( href="#" ) The Weekend
+            
+                li.dropdown
+                  a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) Dining 
+                       span.caret
+                  ul.dropdown-menu( role="menu" )
+                        li: a( href="#" ) Continental Breakfast
+                        li: a( href="#" ) Signatures
+                        li: a( href="#" ) Room Service
+              
+                li.dropdown
+                  a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) Branches 
+                      span.caret
+                  ul.dropdown-menu( role="menu" )
+                        li: a( href="#" ) USA
+                        li: a( href="#" ) International
+                        li.divider
+                        li.dropdown-header Book a Room
+                        li: a( href="#" ) Make Reservation
+                               
               ul.nav.navbar-nav.navbar-right
                 li: a( href="/users/logout" ) Logout
+              ul.nav.navbar-nav.navbar-right
+                li(class=(title == 'Login' ? 'active' : ''))
+                  a( href="/users/login" ) Login
+              ul.nav.navbar-nav.navbar-right
+                li(class=(title == 'Register' ? 'active' : ''))
+                  a( href="/users/register" ) Register
                   
-                  
-                  //li.dropdown
-                      a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) Dropdown 
-                          span.caret
-                      ul.dropdown-menu( role="menu" )
-                          li: a( href="#" ) Action
-                          li: a( href="#" ) Another action
-                          li: a( href="#" ) Something else here
-                          li.divider
-                          li.dropdown-header Nav header
-                          li: a( href="#" ) Separated link
-                          li: a( href="#" ) One more separated link
     .container
     block content
     script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
