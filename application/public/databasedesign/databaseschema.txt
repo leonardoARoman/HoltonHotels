@@ -1,0 +1,125 @@
+create table hotel(HotelID int, location varchar(500),
+		Phone_no varchar(100),
+		primary key(HotelID));
+
+create table breakfast(bType varchar(25) not null, HotelID int not null,
+		Description varchar(50), bPrice float,
+		primary key(bType, HotelID),
+        foreign key(HotelID) references hotel(HotelID) on delete cascade);
+
+create table hoteloffers(HotelID int not null, bType varchar(25) not null,
+		primary key(HotelID),
+        foreign key(HotelID) references hotel(HotelID) on delete cascade,
+        foreign key(bType) references breakfast(bType) on delete cascade);
+
+create table service(sType varchar(25),
+		HotelID int, sCost float,
+        primary key(sType, HotelID),
+        foreign key(HotelID) references hotel(HotelID) on delete cascade);
+
+create table hotelprovides(HotelID int not null, sType varchar(25) not null,
+		primary key(HotelID),
+        foreign key (HotelID) references hotel(HotelID) on delete cascade,
+        foreign key (sType) references service(sType) on delete cascade);
+
+create table room(Room_no int not null, HotelID int not null,
+		Price float, Capacity int, Floor_no int,
+		Description varchar(50), Type varchar(25),
+        primary key(Room_no, HotelID),
+        foreign key(HotelID) references room(Room_no) on delete cascade);
+
+create table hotelhas(HotelID int not null, Room_no int not null,
+		primary key(HotelID, Room_no),
+		foreign key(HotelID) references hotel(HotelID) on delete cascade,
+		foreign key(Room_no) references room(Room_no) on delete cascade);
+
+create table offerroom(Room_no int not null, HotelID int not null,
+		SDate date, EDate date, Discount float,
+		primary key(Room_no, HotelID),
+        foreign key(Room_no) references room(Room_no) on delete cascade,
+        foreign key(HotelID) references hotel(HotelID));
+
+create table customer(CID int not null, Email varchar(50),
+		Address varchar(50), Phone_no varchar(25),
+        name varchar(25),
+        primary key(CID));
+
+
+create table review(ReviewID int, CID int, Rating float, TextComment varchar(500),
+		primary key(ReviewID),
+        foreign key(CID) references customer(CID) on delete no action);
+
+create table assesses(ReviewID int not null, bType varchar(25),
+		primary key(ReviewID),
+        foreign key(ReviewID) references review(ReviewID) on delete cascade,
+        foreign key(bType) references breakfast(bType) on delete cascade);
+
+create table rates(ReviewID int not null, sType varchar(25),
+		primary key(ReviewID),
+        foreign key(ReviewID) references review(ReviewID) on delete cascade,
+        foreign key(sType) references service(sType) on delete cascade);
+
+create table evaluates(ReviewID int not null, Room_no int,
+		primary key(ReviewID),
+        foreign key(ReviewID) references review(ReviewID) on delete cascade,
+        foreign key(Room_no) references room(Room_no) on delete cascade);
+
+create table writes(ReviewID int not null, CID int,
+		primary key(ReviewID),
+        foreign key(ReviewID) references review(ReviewID) on delete cascade,
+        foreign key(CID) references customer(CID) on delete cascade);
+
+create table breakfastreview(ReviewID int not null, bType varchar(25),
+		primary key(ReviewID),
+        foreign key(ReviewID) references review(ReviewID) on delete cascade,
+        foreign key(bType) references breakfast(bType) on delete cascade);
+
+create table servicereview(ReviewID int not null, sType varchar(25),
+		primary key(ReviewID),
+        foreign key(ReviewID) references review(ReviewID) on delete cascade,
+        foreign key(sType) references service(sType) on delete cascade);
+
+create table roomreview(ReviewID int not null, Room_no int,
+		primary key(ReviewID),
+        foreign key(ReviewID) references review(ReviewID) on delete cascade,
+        foreign key(Room_no) references room(Room_no) on delete cascade);
+
+create table creditcard(Cnumber int, Type varchar(15),
+		ExpDate date, BillingAddr varchar(50),
+        name varchar(25), SecCode int,
+        primary key(Cnumber));
+
+create table reservation(InvoiceNO int not null, CID int, Cnumber int,
+		ResDate date, TotalAmt float,
+        primary key(InvoiceNO),
+        foreign key(CID) references customer(CID) on delete cascade,
+        foreign key(Cnumber) references creditcard(Cnumber) on delete cascade);
+
+create table reservationmakes(InvoiceNO int not null, CID int, Cnumber int,
+		primary key(InvoiceNO),
+        foreign key(InvoiceNO) references reservation(InvoiceNO),
+        foreign key(CID) references customer(CID) on delete cascade,
+        foreign key(Cnumber) references creditcard(Cnumber) on delete cascade);
+
+create table reservationincludes(InvoiceNO int not null, bType varchar(25),
+        primary key(InvoiceNO),
+        foreign key(InvoiceNO) references reservation(InvoiceNO) on delete cascade,
+        foreign key(bType) references breakfast(bType) on delete cascade);
+
+create table reservationcontains(InvoiceNO int not null, sType varchar(25),
+        primary key(InvoiceNO),
+        foreign key(InvoiceNO) references reservation(InvoiceNO) on delete cascade,
+        foreign key(sType) references service(sType) on delete cascade);
+
+create table roomreservation(InvoiceNO int not null, Room_no int,
+	InDate date, OutDate date,
+        NOofDays int,
+        primary key(InvoiceNO),
+        foreign key(InvoiceNO) references reservation(InvoiceNO) on delete cascade,
+        foreign key(Room_no) references room(Room_no) on delete no action);
+
+CREATE TABLE user(name varchar(30),
+                              email VARCHAR(30),
+                              userName VARCHAR(30),
+                              password VARCHAR(30),
+                              PRIMARY KEY(userName));
