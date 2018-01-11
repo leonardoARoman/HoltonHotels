@@ -5,3 +5,127 @@ extends layout
 block content
   h1= title
   p Welcome to #{title} web app
+  
+      .container
+            h2 Carousel Example
+            |   
+            |   
+            #myCarousel.carousel.slide(data-ride='carousel')
+             // Indicators
+             ol.carousel-indicators
+              li.active(data-target='#myCarousel', data-slide-to='0')
+              |       
+              li(data-target='#myCarousel', data-slide-to='1')
+              |       
+              li(data-target='#myCarousel', data-slide-to='2')
+              |       
+              li(data-target='#myCarousel', data-slide-to='3')
+              |       
+              li(data-target='#myCarousel', data-slide-to='4')
+              |       
+              li(data-target='#myCarousel', data-slide-to='5')
+              |       
+              li(data-target='#myCarousel', data-slide-to='6')
+              |       
+              li(data-target='#myCarousel', data-slide-to='7')
+              |       
+              li(data-target='#myCarousel', data-slide-to='8')
+              |       
+              li(data-target='#myCarousel', data-slide-to='9')
+              |       
+              li(data-target='#myCarousel', data-slide-to='10')
+                
+             // Wrapper for slides
+             .carousel-inner
+              .item.active 
+                img(src='/images/banner.jpg', alt='Los Angeles')
+              | 
+              .item
+                img(src='/images/pic1.jpg', alt='Chicago')
+              |  
+              .item
+                img(src='/images/pic4.jpg', alt='Chicago')
+              | 
+              .item
+                img(src='/images/pic4.jpg', alt='New york')
+              | 
+              .item
+                img(src='/images/pic3.jpg', alt='New york')
+              |  
+              .item
+                img(src='/images/1.jpg', alt='New york')
+              |  
+              .item
+                img(src='/images/2.jpg', alt='New york')
+              |       
+              .item
+                img(src='/images/3.jpg', alt='New york')
+              |       
+              .item
+                img(src='/images/4.jpg', alt='New york')
+              |       
+              .item
+                img(src='/images/5.jpg', alt='New york')
+              |       
+              .item
+                img(src='/images/6.jpg', alt='New york')
+              |     
+              |       
+              .item
+                img(src='/images/7.jpg', alt='New york')
+             // Left and right controls
+             a.left.carousel-control(href='#myCarousel', data-slide='prev')
+              span.glyphicon.glyphicon-chevron-left
+              |       
+              span.sr-only Previous
+             |     
+             a.right.carousel-control(href='#myCarousel', data-slide='next')
+              span.glyphicon.glyphicon-chevron-right
+              |       
+              span.sr-only Next   
+        p photos      
+        .row
+                    .col-md-4
+                      .thumbnail
+                        a(href='/images/8.jpg')
+                          img(src='/images/8.jpg', alt='Lights', style='width:100%')
+                          |         
+                          .caption
+                            p Lorem ipsum...
+                    |   
+                    .col-md-4
+                      .thumbnail
+                        a(href='/images/9.jpg')
+                          img(src='/images/9.jpg', alt='Nature', style='width:100%')
+                          |         
+                          .caption
+                            p Lorem ipsum...
+                    |   
+                    .col-md-4
+                      .thumbnail
+                        a(href='/images/10.jpg')
+                          img(src='/images/10.jpg', alt='Fjords', style='width:100%')
+                          |         
+                          .caption
+                            p Lorem ipsum...
+                    |   
+                    .col-md-4
+                      .thumbnail
+                        a(href='/images/11.jpg')
+                          img(src='/images/11.jpg', alt='Nature', style='width:100%')
+                          |         
+                          .caption
+                            p Lorem ipsum...    
+                    |   
+                    .col-md-4
+                      .thumbnail
+                        a(href='/images/11.jpg')
+                          img(src='/images/11.jpg', alt='Nature', style='width:100%')
+                          |         
+                          .caption
+                            p Lorem ipsum...                
+        .container
+          h2 Responsive Embed  
+          .embed-responsive.embed-responsive-16by9
+            iframe.embed-responsive-item(src='https://www.youtube.com/embed/XGSy3_Czz8k')
+        

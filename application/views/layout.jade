@@ -10,8 +10,10 @@ html( lang="en" )
         //- Bootswatch Theme
         link(href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css", rel="stylesheet")
         style.
+         .carousel-inner > .item > img { width:100%; height:400px; }
           body{
           background-image: url("/images/pic2.jpg");
+          background-attachment: fixed; 
           }
     body
       //background-image: url("./public/images/pic3.jpg");
@@ -58,6 +60,8 @@ html( lang="en" )
                         li.divider
                         li.dropdown-header Book a Room
                         li: a( href="#" ) Make Reservation
+                        li: a( href="#" ) Contact us
+                        li: a( href="/users/chat" ) Live Chat
                                
               ul.nav.navbar-nav.navbar-right
                 li: a( href="/users/logout" ) Logout
