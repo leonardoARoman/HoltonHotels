@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 
+
+
 // Make connection to MySql
 const db = mysql.createConnection({
   host      : 'localhost',
@@ -30,6 +32,11 @@ router.get('/register',(req, res, next) => {
 // Login rout.
 router.get('/login', (req, res, next) => {
   res.render('login',{title:'Login'});
+});
+
+// Chat rout.
+router.get('/chat', (req, res, next) => {
+  res.render('chat',{title:'Live Chat'});
 });
 
 // Get info from register text fields .
